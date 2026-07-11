@@ -1,22 +1,30 @@
-from fastapi import FastAPI
-from tools import get_dataset_summary, aggregate_data
+import sys
+import os
+sys.path.append(os.path.dirname(__file__))
 
-app=FastAPI()
+from fastapi import FastAPI
+from pydantic import BaseModel
+from chat_service import process_user_query
+
+app = FastAPI(title="FarmwiseAI Backend")
+
+
+class ChatRequest(BaseModel):
+    chat_id: str
+    message: str
+
 
 @app.get("/")
 def home():
     return {
-        "message":"Farmwise AI Backend Running"
+        "status": "running",
+        "application": "FarmwiseAI Backend"
     }
-@app.get("/summary")
-def summary():
-    return get_dataset_summary()
 
-@app.get("/average-yield")
-def average_yield():
-    result=aggregate_data(
-        group_by="Item",
-        metric="hg/ha_yield",
-        aggregation="mean"
+
+@app.post("/chat")
+def chat(request: ChatRequest):
+    return process_user_query(
+        request.chat_id,
+        request.message
     )
-    return result.to_dict(orient="records")
