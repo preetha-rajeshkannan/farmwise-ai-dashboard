@@ -10,7 +10,7 @@ def ask_llm(messages):
     for attempt in range(3):
         try:
             response = client.chat.completions.create(
-                model="llama-3.1-8b-instant",
+                model="meta-llama/llama-4-scout-17b-16e-instruct",
                 messages=messages,
                 tools=TOOLS,
                 tool_choice="auto"

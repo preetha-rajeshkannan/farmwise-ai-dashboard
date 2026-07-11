@@ -100,33 +100,36 @@ TOOLS = [
             "properties": {
 
                 "group_by": {
-                    "type": "string",
+                    "type": ["string", "null"],
                     "enum": [
                         "Area",
                         "Item",
-                        "Year"
+                        "Year",
+                        None
                     ]
                 },
 
                 "metric": {
-                    "type": "string",
+                    "type": ["string", "null"],
                     "enum": [
                         "hg/ha_yield",
                         "average_rain_fall_mm_per_year",
                         "pesticides_tonnes",
-                        "avg_temp"
+                        "avg_temp",
+                        None
                     ]
                 },
 
                 "aggregation": {
-                    "type": "string",
+                    "type": ["string", "null"],
                     "enum": [
                         "mean",
                         "sum",
                         "max",
                         "min",
                         "count",
-                        "avg"
+                        "avg",
+                        None
                     ]
                 },
 
@@ -159,11 +162,47 @@ TOOLS = [
 
             },
 
-            "required": [
-                "group_by",
-                "metric",
-                "aggregation"
-            ]
+            "required": []
+        }
+    }
+},
+
+# =====================================================
+# MODIFY CHART
+# =====================================================
+
+{
+    "type": "function",
+    "function": {
+        "name": "modify_chart",
+        "description": "Modify the visual properties or limits of the currently displayed chart without changing the underlying data.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "chart_type": {
+                    "type": ["string", "null"],
+                    "enum": [
+                        "bar",
+                        "line",
+                        "scatter",
+                        "pie",
+                        "histogram",
+                        "box",
+                        None
+                    ]
+                },
+                "limit": {
+                    "type": ["integer", "null"]
+                },
+                "sort_by": {
+                    "type": ["string", "null"]
+                },
+                "ascending": {
+                    "type": ["boolean", "null"]
+                },
+                "filters": FILTER_SCHEMA
+            },
+            "required": []
         }
     }
 },
@@ -319,122 +358,6 @@ TOOLS = [
     }
 },
 
-# =====================================================
-# TREND ANALYSIS
-# =====================================================
 
-{
-    "type": "function",
-    "function": {
-        "name": "trend_analysis",
-        "description": "Analyze trends over Area, Item or Year.",
-        "parameters": {
-            "type": "object",
-            "properties": {
-
-                "x_column": {
-                    "type": "string",
-                    "enum": [
-                        "Area",
-                        "Item",
-                        "Year"
-                    ]
-                },
-
-                "metric": {
-                    "type": "string",
-                    "enum": [
-                        "hg/ha_yield",
-                        "average_rain_fall_mm_per_year",
-                        "pesticides_tonnes",
-                        "avg_temp"
-                    ]
-                },
-
-                "aggregation": {
-                    "type": "string",
-                    "enum": [
-                        "mean",
-                        "sum",
-                        "max",
-                        "min",
-                        "count"
-                    ]
-                },
-
-                "filters": FILTER_SCHEMA
-
-            },
-
-            "required": [
-                "x_column",
-                "metric"
-            ]
-        }
-    }
-},
-
-# =====================================================
-# TOP K
-# =====================================================
-
-{
-    "type": "function",
-    "function": {
-        "name": "top_k_records",
-        "description": "Return top or bottom K grouped records ranked by a numerical metric.",
-        "parameters": {
-            "type": "object",
-            "properties": {
-
-                "group_by": {
-                    "type": "string",
-                    "enum": [
-                        "Area",
-                        "Item",
-                        "Year"
-                    ]
-                },
-
-                "metric": {
-                    "type": "string",
-                    "enum": [
-                        "hg/ha_yield",
-                        "average_rain_fall_mm_per_year",
-                        "pesticides_tonnes",
-                        "avg_temp"
-                    ]
-                },
-
-                "aggregation": {
-                    "type": "string",
-                    "enum": [
-                        "mean",
-                        "sum",
-                        "max",
-                        "min",
-                        "count"
-                    ]
-                },
-
-                "k": {
-                    "type": "integer"
-                },
-
-                "ascending": {
-                    "type": "boolean"
-                },
-
-                "filters": FILTER_SCHEMA
-
-            },
-
-            "required": [
-                "group_by",
-                "metric"
-            ]
-        }
-    }
-}
 
 ]
