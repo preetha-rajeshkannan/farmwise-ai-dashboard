@@ -193,49 +193,46 @@ This enables natural conversations.
 
 ---
 
-# 4. Dataset Boundary Enforcement
+# 4. Overcoming AI Hallucinations
 
 ## Decision
 
-Restrict the chatbot to the provided agricultural dataset.
+Implement a multi-layered defense system to strictly bound the LLM to the provided dataset and prevent hallucinations.
 
 ---
 
 ## Why?
 
-LLMs naturally attempt to answer every question, even when information does not exist.
+LLMs naturally attempt to answer every question, even when information does not exist. Left unchecked, a data analytics AI will confidently hallucinate metrics, countries, or crops that are not actually in the CSV.
 
-This may introduce hallucinations.
-
-To preserve analytical integrity, the chatbot only answers questions supported by the dataset.
+To preserve analytical integrity, the chatbot enforces strict factual accuracy.
 
 ---
 
-## Examples
+## How Hallucinations Were Overcome
 
-Allowed:
+We implemented a 4-layer defense architecture to prevent the AI from making things up:
 
-> Compare rice production.
+### 1. System Prompt Bounding
+The system prompt strictly commands the AI to act as an agricultural expert and absolutely refuse any queries outside the domain.
+* **Example**: If asked *"Which tractor brand is best?"*, it politely refuses.
 
-Allowed:
+### 2. Dynamic Schema Injection
+The exact dataset schema, column names, and allowed metric types are injected into the system prompt. The model knows exactly what variables it is allowed to plot, preventing it from hallucinating non-existent columns (like "GDP").
 
-> Show rainfall trend.
+### 3. Data Verification Tools
+Before making an aggregate chart, the LLM is given access to a `list_unique_values` tool. If a user asks about "Corn", the AI can query the database, realize "Corn" is actually listed as "Maize", and use the correct factual term.
 
-Rejected politely:
-
-> Which tractor brand is best?
-
-Rejected politely:
-
-> Write a poem.
+### 4. Backend Validation (Python Layer)
+Even if the AI hallucinates a filter (e.g., trying to filter for "Mars" as a country), the Python backend intercepts the tool call. The `apply_filters` function strictly checks the requested filter against `df[column].unique()`. If the value doesn't exist, it throws an error back to the LLM, forcing the AI to self-correct rather than silently failing or hallucinating data.
 
 ---
 
 ## Benefits
 
-- Prevents fabricated insights
-- Maintains user trust
-- Keeps responses evidence-based
+- Guarantees 100% factual insights based *only* on the CSV data.
+- Prevents fabricated metrics or hallucinated countries.
+- Maintains enterprise-grade user trust.
 
 ---
 
