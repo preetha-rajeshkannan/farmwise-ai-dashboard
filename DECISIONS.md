@@ -501,6 +501,9 @@ Additionally, Groq offers access to multiple open-source models through a unifie
 
 ---
 
+### DEPLOYED URL:
+https://farmwise-ai-dashboard-preetha.streamlit.app/
+
 
 # Summary of Key Decisions
 
