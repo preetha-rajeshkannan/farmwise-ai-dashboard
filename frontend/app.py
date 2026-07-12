@@ -156,7 +156,7 @@ with st.sidebar:
 
     for chat in chats:
 
-        c1, c2 = st.columns([5, 1])
+        c1, c2 = st.columns([8, 3])
 
         chat_title = get_chat_title(chat)
         label = f"🔴 {chat_title}" if chat == st.session_state.chat_id else chat_title
