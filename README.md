@@ -63,7 +63,7 @@ The application relies on Groq for extremely fast inference.
 - **Why?** After testing the 8B and 70B variants, the 17B Scout model was chosen because it strikes the perfect balance. It is highly optimized for following strict coding and JSON instructions (which is required for our dynamic chart generation) without burning through the free tier token limits as fast as the 70B model.
 
 ### 2. Internal AI Tools (Function Calling)
-We explicitly chose *not* to use hardcoded keyword rules (e.g. `if "yield" in query: return chart`). Instead, the LLM is given access to semantic tools:
+I explicitly chose *not* to use hardcoded keyword rules (e.g. `if "yield" in query: return chart`). Instead, the LLM is given access to semantic tools:
 - `generate_chart`: An internal tool defined in `tool_definitions.py`. The LLM autonomously analyzes the dataset schema and outputs a structured JSON defining the `chart_type`, `x_column`, `y_column`, and `filters`. The backend intercepts this JSON to dynamically filter Pandas dataframes and render Plotly charts.
 - `dataset_summary`: Allows the LLM to fetch top-level metrics to answer high-level overview questions.
 

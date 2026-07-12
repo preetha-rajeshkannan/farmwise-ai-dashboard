@@ -211,7 +211,7 @@ To preserve analytical integrity, the chatbot enforces strict factual accuracy.
 
 ## How Hallucinations Were Overcome
 
-We implemented a 4-layer defense architecture to prevent the AI from making things up:
+I implemented a 4-layer defense architecture to prevent the AI from making things up:
 
 ### 1. System Prompt Bounding
 The system prompt strictly commands the AI to act as an agricultural expert and absolutely refuse any queries outside the domain.
