@@ -240,16 +240,24 @@ hr {
 }
 
 /* Change Sidebar Toggle to Hamburger */
-[data-testid="collapsedControl"] svg {
+[data-testid="collapsedControl"] svg,
+[data-testid="collapsedControl"] i,
+button[kind="header"] svg {
     display: none !important;
+    opacity: 0 !important;
 }
 
-[data-testid="collapsedControl"]::before {
-    content: "☰";
-    font-size: 24px;
-    font-weight: 800;
-    color: #1e40af;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+[data-testid="collapsedControl"] button::after,
+[data-testid="collapsedControl"] div::after,
+[data-testid="collapsedControl"]::after,
+button[kind="header"]::after {
+    content: "☰" !important;
+    font-size: 28px !important;
+    font-weight: 800 !important;
+    color: #1e40af !important;
+    display: block !important;
+    position: absolute !important;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
