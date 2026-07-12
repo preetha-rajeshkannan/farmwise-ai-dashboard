@@ -238,3 +238,18 @@ hr {
         transform: translateY(0px);
     }
 }
+
+/* Change Sidebar Toggle to Hamburger */
+[data-testid="collapsedControl"] svg {
+    display: none !important;
+}
+
+[data-testid="collapsedControl"]::before {
+    content: "☰";
+    font-size: 24px;
+    font-weight: 800;
+    color: #1e40af;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
