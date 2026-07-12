@@ -88,14 +88,6 @@ def process_user_query(chat_id, query):
         "content": f"The tool '{tool_name}' was successfully executed with arguments: {json.dumps(args)}. The results were displayed to the user."
     })
 
-    print("\n========== TOOL ==========")
-    print(tool_name)
-    print(tool_call.function.arguments)
-    print("==========================")
-
-    print("\n========== TOOL ARGS ==========")
-    print(json.dumps(args, indent=2))
-    print("===============================\n")
 
     try:
         # ==========================================

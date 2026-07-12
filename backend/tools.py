@@ -169,61 +169,6 @@ def scatter_analysis(
     return df[[x_column, y_column]]
 
 
-# ==========================================================
-# Trend Analysis
-# ==========================================================
-
-# def trend_analysis(
-#     x_column,
-#     metric,
-#     aggregation="mean",
-#     filters=None
-# ):
-
-#     df = get_filtered_dataframe(filters)
-
-#     if x_column not in df.columns:
-#         raise ValueError(f"Invalid column: {x_column}")
-
-#     if metric not in df.columns:
-#         raise ValueError(f"Invalid metric: {metric}")
-
-#     return (
-#         df.groupby(x_column)[metric]
-#         .agg(aggregation)
-#         .reset_index()
-#     )
-
-
-# ==========================================================
-# Top K Records
-# ==========================================================
-
-# def top_k_records(
-#     group_by,
-#     metric,
-#     aggregation="mean",
-#     k=5,
-#     ascending=False,
-#     filters=None
-# ):
-
-#     df = get_filtered_dataframe(filters)
-
-#     if group_by not in df.columns:
-#         raise ValueError(f"Invalid column: {group_by}")
-
-#     if metric not in df.columns:
-#         raise ValueError(f"Invalid metric: {metric}")
-
-#     return (
-#         df.groupby(group_by)[metric]
-#         .agg(aggregation)
-#         .reset_index()
-#         .sort_values(metric, ascending=ascending)
-#         .head(k)
-#     )
-
 
 # ==========================================================
 # General Aggregation Tool
@@ -250,10 +195,6 @@ def aggregate_data(
     if metric not in df.columns:
         raise ValueError(f"Invalid metric column: {metric}")
 
-    print("\n========== FILTER DEBUG ==========")
-    print("Filters:", filters)
-    print("Rows:", len(df))
-    print("==================================\n")
 
     result = (
         df.groupby(group_by)[metric]
