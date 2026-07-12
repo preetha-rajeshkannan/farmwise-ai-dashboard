@@ -76,4 +76,7 @@ This project was pair-programmed using **Antigravity** (Google Deepmind's Advanc
 
 ---
 
+### DEPLOYED URL:
+https://farmwise-ai-dashboard-preetha.streamlit.app/
+
 *For an in-depth breakdown of the technical choices made during development, please refer to the `DECISIONS.md` file.*
