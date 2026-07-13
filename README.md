@@ -76,6 +76,44 @@ This project was pair-programmed using **Antigravity** (Google Deepmind's Advanc
 
 ---
 
+## 💡 Example Dashboard Queries
+
+Here are some example queries you can try in the dashboard to explore the data, categorized by analytical capabilities:
+
+### 1. General Exploration & Summaries
+Explore what data is available without generating charts:
+* *"How many rows of data do we have, and what is the date range?"*
+* *"What are all the unique crops available in this dataset?"*
+* *"List all the countries included in the data."*
+
+### 2. Aggregations & Charting
+Group metrics, apply filters, and dynamically generate charts:
+* *"Show me a bar chart of the average crop yield by country."*
+* *"Plot a line chart showing the total pesticide usage in India over the last 10 years."*
+* *"What is the total yield of Wheat, Maize, and Rice in Brazil? Show it as a pie chart."*
+* *"Which 5 countries have the highest average temperature? Show a bar chart."*
+
+### 3. Statistical Analysis & Outliers
+Dive deeper with statistical insights and anomaly detection:
+* *"Give me the descriptive statistics for crop yield in the United States."*
+* *"Are there any outliers in pesticide usage for Potatoes?"*
+* *"What is the maximum and minimum average rainfall recorded?"*
+
+### 4. Correlation & Scatter Analysis
+Find relationships between variables:
+* *"Is there a correlation between average temperature and crop yield?"*
+* *"Show me a scatter plot comparing pesticide usage vs. crop yield."*
+* *"How does average rainfall correlate with pesticide usage in India?"*
+
+### 5. Modifying Existing Charts
+Dynamically update the current chart without losing your place:
+* *"Change this to a line chart."*
+* *"Sort the chart in descending order."*
+* *"Only show me the top 10 results from this chart."*
+* *"Filter this chart to only show data from 2010 to 2013."*
+
+---
+
 ### DEPLOYED URL:
 https://farmwise-ai-dashboard-preetha.streamlit.app/
 
