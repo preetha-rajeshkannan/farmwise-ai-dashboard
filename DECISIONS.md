@@ -419,22 +419,19 @@ Although the model performed adequately, its responses were less consistent when
 
 ## Final Production Model
 
-### meta-llama/llama-4-scout-17b-16e-instruct
+### openai/gpt-oss-120b
 
 ### Why this model was chosen
 
-After evaluating multiple options, Llama 4 Scout provided the best balance between reasoning capability, latency, token efficiency, and reliable function calling.
+After the deprecation of Llama 4 Scout, we migrated to OpenAI's open-source 120B model. It provides exceptional reasoning capabilities and highly reliable function calling for our tool usage.
 
-It consistently generated valid structured outputs while maintaining lower computational requirements than the 70B model.
+It consistently generated valid structured outputs.
 
 ### Advantages
 
 - Excellent structured JSON generation
 - Strong reasoning
 - Optimized for instruction following
-- Faster than very large models
-- Lower token consumption
-- Fresh Groq quota
 - Reliable chart generation
 
 ### Limitations
@@ -448,7 +445,7 @@ It consistently generated valid structured outputs while maintaining lower compu
 
 **Selected Model**
 
-> **meta-llama/llama-4-scout-17b-16e-instruct**
+> **openai/gpt-oss-120b**
 
 It offered the best overall trade-off between:
 
@@ -515,4 +512,4 @@ https://farmwise-ai-dashboard-preetha.streamlit.app/
 | Frontend Framework           | Streamlit                                    |
 | Data Processing              | Pandas                                       |
 | LLM Provider                 | Groq API                                     |
-| Production Model             | `meta-llama/llama-4-scout-17b-16e-instruct`  |
+| Production Model             | `openai/gpt-oss-120b`  |

@@ -59,8 +59,8 @@ streamlit run app.py
 
 ### 1. The Groq Model
 The application relies on Groq for extremely fast inference. 
-- **Production Model:** `meta-llama/llama-4-scout-17b-16e-instruct`
-- **Why?** After testing the 8B and 70B variants, the 17B Scout model was chosen because it strikes the perfect balance. It is highly optimized for following strict coding and JSON instructions (which is required for our dynamic chart generation) without burning through the free tier token limits as fast as the 70B model.
+- **Production Model:** `openai/gpt-oss-120b`
+- **Why?** Migrated to OpenAI's open-source 120B model after the deprecation of Llama 4 Scout. It provides exceptional reasoning and is highly optimized for following strict coding and JSON instructions (which is required for our dynamic chart generation).
 
 ### 2. Internal AI Tools (Function Calling)
 I explicitly chose *not* to use hardcoded keyword rules (e.g. `if "yield" in query: return chart`). Instead, the LLM is given access to semantic tools:

@@ -8,7 +8,7 @@ client=Groq(
     api_key=os.getenv("GROQ_API_KEY")
 )
 def ask_llm(messages):
-    model = "meta-llama/llama-4-scout-17b-16e-instruct"
+    model = "openai/gpt-oss-120b"
     for attempt in range(3):
         try:
             response = client.chat.completions.create(
